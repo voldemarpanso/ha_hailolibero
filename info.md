@@ -20,4 +20,4 @@ This is not official integration from Hailo. It's made out of curiosity, fun and
 
 ## Why? :)
 To keep it closed when vacuum passes under it and reset to normal operation when vacuum is not cleaning.
-Faster remote (via voice for example) - HA keeps it logged in, login seems to cause ~3sec delay, which makes it unusable, annoyingly slow, if you wish.
+Faster remote operation (via voice for example) - HA keeps it logged in, login seems to cause ~3sec delay, which makes it unusable, annoyingly slow, if you wish.
