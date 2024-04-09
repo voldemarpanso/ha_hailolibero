@@ -6,10 +6,13 @@ This is not official integration from Hailo. It's made out of curiosity, fun and
 - https://www.hailo.de/en/built-in-technology/p/hailo-libero-30-3697301
 
 ## Installation
-- Add custom repo in HACS: https://github.com/voldemarpanso/ha_hailolibero
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=voldemarpanso&repository=ha_hailolibero&category=integration)
+- or add custom repo manually in HACS: https://github.com/voldemarpanso/ha_hailolibero
+
 
 ## Configuration
-- Go to Settings -> Devices & Services
+[![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=hailo)
+- or go to Settings -> Devices & Services
 - Add Integration
 - Search for Hailo
 - Select and configure your Hailo
