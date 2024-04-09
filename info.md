@@ -5,9 +5,6 @@ This is not official integration from Hailo. It's made out of curiosity, fun and
 ## Supported device
 - https://www.hailo.de/en/built-in-technology/p/hailo-libero-30-3697301
 
-## Installation
-- Add custom repo in HACS: https://github.com/voldemarpanso/ha_hailolibero
-
 ## Configuration
 - Go to Settings -> Devices & Services
 - Add Integration
