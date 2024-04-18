@@ -31,6 +31,12 @@ This is not official integration from Hailo. It's made out of curiosity, fun and
 - Pullout Force
 - Restart
 
+## Screenshots
+- Setup
+![setup !secreen](https://github.com/voldemarpanso/ha_hailolibero/blob/main/images/setup.png)
+- Controls
+![controls](https://github.com/voldemarpanso/ha_hailolibero/blob/main/images/device_controls.png)
+
 ## Why? :)
 To keep it closed when vacuum passes under it and reset to normal operation when vacuum is not cleaning.
 Faster remote operation (via voice for example) - HA keeps it logged in, login seems to cause ~3sec delay, which makes it unusable, annoyingly slow, if you wish.
