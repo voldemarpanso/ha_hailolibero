@@ -35,6 +35,8 @@ HAILO_NUMBERS: tuple[HailoNumberEntityDescription, ...] = (
         key="led",
         name="Led Brightness",
         icon="mdi:lightbulb-on",
+        native_unit_of_measurement="%",
+        native_step=10,
         entity_category=EntityCategory.CONFIG,
         value_fn=lambda device: device.settings.led,
         enabled=lambda device: True,
@@ -44,6 +46,8 @@ HAILO_NUMBERS: tuple[HailoNumberEntityDescription, ...] = (
         key="pwr",
         name="Pullout Force",
         icon="mdi:pickaxe",
+        native_unit_of_measurement="%",
+        native_step=10,
         entity_category=EntityCategory.CONFIG,
         value_fn=lambda device: device.settings.pwr,
         enabled=lambda device: True,
@@ -53,6 +57,7 @@ HAILO_NUMBERS: tuple[HailoNumberEntityDescription, ...] = (
         key="dist",
         name="Detection Range",
         icon="mdi:ruler",
+        native_unit_of_measurement="mm",
         entity_category=EntityCategory.CONFIG,
         device_class=NumberDeviceClass.DISTANCE,
         value_fn=lambda device: device.settings.dist,
@@ -96,17 +101,32 @@ class HailoNumberDevice(CoordinatorEntity, NumberEntity):
     @property
     def native_value(self):
         """Return the state of the number."""
-        return self.entity_description.value_fn(self._device).value
+        if self.entity_description.device_class == NumberDeviceClass.DISTANCE:
+            _LOGGER.debug(f"returning value: {self.entity_description.value_fn(self._device).value}")
+            return self.entity_description.value_fn(self._device).value
+        else:
+            _LOGGER.debug(f"returning value in %: {round( (self.entity_description.value_fn(self._device).value * 10) * 100 / self.native_max_value)}")
+            return round( (self.entity_description.value_fn(self._device).value * 10) * 100 / self.native_max_value)
 
     @property
     def native_min_value(self):
         """Return min limit for the number."""
-        return self.entity_description.value_fn(self._device).min
+        if self.entity_description.device_class == NumberDeviceClass.DISTANCE:
+            _LOGGER.debug(f"returning min value: {self.entity_description.value_fn(self._device).min}")
+            return self.entity_description.value_fn(self._device).min
+        else:
+            _LOGGER.debug(f"10")
+            return 10
 
     @property
     def native_max_value(self):
         """Return max limit for the number."""
-        return self.entity_description.value_fn(self._device).max
+        if self.entity_description.device_class == NumberDeviceClass.DISTANCE:
+            _LOGGER.debug(f"returning min value: {self.entity_description.value_fn(self._device).max}")
+            return self.entity_description.value_fn(self._device).max
+        else:
+            _LOGGER.debug(f"100")
+            return 100
 
     @property
     def device_info(self) -> DeviceInfo:
@@ -118,7 +138,11 @@ class HailoNumberDevice(CoordinatorEntity, NumberEntity):
         _LOGGER.debug(f"async_set_native_value: {self.entity_description.key}: {value}")
         
         data = getattr(self._device.settings, self.entity_description.key)
-        data.value = round(value);
+        if self.entity_description.device_class == NumberDeviceClass.DISTANCE:
+            data.value = round(value);
+        else:
+            data.value = round( self.entity_description.value_fn(self._device).min + ((value - 10) / 10) );
+
         setattr(self._device.settings, self.entity_description.key, data)
         self._device.hailo.settings = self._device.settings
 

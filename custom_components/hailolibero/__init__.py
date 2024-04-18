@@ -92,7 +92,7 @@ class HailoDevice:
         """ Connection to Hailo """
         self.hailo: HailoLibero = hailo
 
-        self._available = 0
+        self._attr_available = 0
         self._available_threshold = 30
         self._coordinator: DataUpdateCoordinator | None = None
         self._extra_attributes = {}
@@ -106,10 +106,10 @@ class HailoDevice:
        
         success = await self.hailo.read_settings(self)
         if success:
-            self._available = 0
+            self._attr_available = 0
         else:
             _LOGGER.warning("Update failed for %s", self.info.device)
-            self._available += 1
+            self._attr_available += 1
     
     async def async_create_coordinator(self, hass: HomeAssistant) -> None:
         """Get the coordinator for a specific device."""

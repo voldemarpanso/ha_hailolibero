@@ -88,7 +88,7 @@ class HailoButtonDevice(CoordinatorEntity, ButtonEntity):
     def device_info(self) -> DeviceInfo:
         """Return a device description for device registry."""
         return self._device.device_info
-            
+
     async def async_press(self):
         """ Push Hailo Libero."""
         _LOGGER.debug(f"async_press: {self.entity_description.key}")
