@@ -33,9 +33,11 @@ This is not official integration from Hailo. It's made out of curiosity, fun and
 
 ## Screenshots
 - Setup
-![setup !secreen](https://github.com/voldemarpanso/ha_hailolibero/blob/main/images/setup.png)
+  
+  ![setup !secreen](https://github.com/voldemarpanso/ha_hailolibero/blob/main/images/setup.png)
 - Controls
-![controls](https://github.com/voldemarpanso/ha_hailolibero/blob/main/images/device_controls.png)
+  
+  ![controls](https://github.com/voldemarpanso/ha_hailolibero/blob/main/images/device_controls.png)
 
 ## Why? :)
 To keep it closed when vacuum passes under it and reset to normal operation when vacuum is not cleaning.
