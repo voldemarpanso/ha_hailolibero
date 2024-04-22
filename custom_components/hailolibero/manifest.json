@@ -1,6 +1,6 @@
 {
-  "domain": "hailo",
-  "version": "0.0.3",
+  "domain": "hailolibero",
+  "version": "0.0.4",
   "name": "Hailo Libero 3.0",
   "codeowners": [ "@voldemarpanso" ],
   "config_flow": true,
