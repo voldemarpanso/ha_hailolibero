@@ -14,9 +14,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.auth.providers.homeassistant import InvalidAuth
 from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
-
-from hailolibero import HailoLibero
-from hailolibero.hailolibero import HailoSettings, HailoInfo
+from homeassistant.helpers.importlib import async_import_module
 
 from .const import DOMAIN, HAILO_DEVICES, MANUFACTURER, MODEL
 from .config_flow import CannotConnect
@@ -37,7 +35,9 @@ async def async_setup_entity_platforms(
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Establish connection with Hailo."""
-    hailo = HailoLibero(
+
+    module = await async_import_module(hass, "hailolibero")
+    hailo = module.HailoLibero(
         ip_address=entry.data[CONF_HOST]
     )
 
@@ -73,18 +73,21 @@ async def async_auth(hailo: HailoLibero):
 
 async def hailo_device_setup(hass: HomeAssistant, hailo: HailoLibero):
     """ Populate device data set it up """
+    module = await async_import_module(hass, "hailolibero.hailolibero")
     await hailo.read_settings()
     hailo_device = HailoDevice(
         device={ "name": hailo.info.device },
-        hailo=hailo
+        hailo=hailo,
+        settings=module.HailoSettings,
+        info=module.HailoInfo
     )
     await hailo_device.async_create_coordinator(hass)
     return hailo_device
 
 class HailoDevice:
-    def __init__(self, device, hailo: HailoLibero):
-        self.settings = HailoSettings
-        self.info: HailoInfo
+    def __init__(self, device, hailo: HailoLibero, settings, info):
+        self.settings = settings
+        self.info: info
         self.device = device
         self.latest_update = 0
 

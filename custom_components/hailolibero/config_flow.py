@@ -12,8 +12,6 @@ from homeassistant.const import CONF_HOST, CONF_PASSWORD
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError
 
-from hailolibero import HailoLibero
-
 from .const import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
@@ -28,8 +26,8 @@ STEP_USER_DATA_SCHEMA = vol.Schema(
 
 async def validate_input(hass: HomeAssistant, data: dict[str, Any]) -> dict[str, Any]:
     """Validate the user input allows us to connect.    """
-
-    hailo = HailoLibero(
+    module = await async_import_module(hass, "hailolibero")
+    hailo = module.HailoLibero(
         ip_address=data[CONF_HOST],
         password=data[CONF_PASSWORD]
     )

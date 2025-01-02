@@ -11,7 +11,7 @@
   "iot_class": "local_polling",
   "loggers": ["hailo"],
   "requirements": [
-      "git+https://github.com/voldemarpanso/hailolibero.git@main#hailolibero==0.1.0"
+      "git+https://github.com/voldemarpanso/hailolibero.git@main#hailolibero==0.1.1"
     ],
   "ssdp": [],
   "zeroconf": []
