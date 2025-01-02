@@ -107,7 +107,7 @@ class HailoDevice:
         """Pull the latest data from SaveConnect API."""
         _LOGGER.debug(f"_async_update attempt: %s", self.hailo.info.device)
        
-        success = await self.hailo.read_settings(self)
+        success = await self.hailo.read_settings()
         if success:
             self._attr_available = 0
         else:
