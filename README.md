@@ -1,6 +1,6 @@
 # Hailo Libero 3.0 Integration (non-official)
 [![GitHub Release](https://img.shields.io/github/v/release/voldemarpanso/ha_hailolibero)](https://github.com/voldemarpanso/ha_hailolibero/)
-[![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/voldemarpanso/ha_hailolibero/total)](https://github.com/voldemarpanso/ha_hailolibero/)
+[![Downloads](https://img.shields.io/badge/dynamic/json?label=Downloads&url=https://analytics.home-assistant.io/custom_integrations.json&query=$.hailolibero.total)](https://github.com/voldemarpanso/ha_hailolibero/)
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/voldemarpanso/ha_hailolibero)](https://github.com/voldemarpanso/ha_hailolibero/)
 [![HA Badge](https://img.shields.io/badge/Home%20Assistant-%23FFFFFF?logo=homeassistant)](https://www.home-assistant.io/)
 [![HACS Badge](https://img.shields.io/badge/Custom-%2341BDF5?label=HACS)](https://hacs.xyz/docs/faq/custom_repositories/)
