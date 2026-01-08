@@ -10,7 +10,7 @@
   "issue_tracker": "https://github.com/voldemarpanso/ha_hailolibero/issues",
   "loggers": ["hailo"],
   "requirements": [
-      "hailolibero @ git+https://github.com/voldemarpanso/hailolibero.git@0.1.1"
+      "hailolibero@git+https://github.com/voldemarpanso/hailolibero.git@0.1.1"
     ],
   "ssdp": [],
   "version": "0.0.9",
