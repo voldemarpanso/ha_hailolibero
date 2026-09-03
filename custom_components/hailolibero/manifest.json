@@ -13,6 +13,6 @@
       "hailolibero@git+https://github.com/voldemarpanso/hailolibero.git@0.1.1"
     ],
   "ssdp": [],
-  "version": "0.0.9",
+  "version": "0.0.10",
   "zeroconf": []
 }

@@ -11,6 +11,7 @@ from homeassistant.config_entries import ConfigFlow, ConfigFlowResult
 from homeassistant.const import CONF_HOST, CONF_PASSWORD
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError
+from homeassistant.helpers import config_validation as cv
 from homeassistant.helpers.importlib import async_import_module
 
 from .const import DOMAIN
@@ -20,8 +21,8 @@ _LOGGER = logging.getLogger(__name__)
 # TODO adjust the data schema to the data that you need
 STEP_USER_DATA_SCHEMA = vol.Schema(
     {
-        vol.Required(CONF_HOST): vol.basestring,
-        vol.Optional(CONF_PASSWORD, default="hailo"): vol.basestring,
+        vol.Required(CONF_HOST): vol.All(cv.string, vol.Length(min=1)),
+        vol.Optional(CONF_PASSWORD, default="hailo"): vol.All(cv.string, vol.Length(min=1)),
     }
 )
 
